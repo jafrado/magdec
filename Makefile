@@ -1,14 +1,10 @@
-CFLAGS = -O2
+CFLAGS = -O2 -Werror
 CC = gcc
 
-default: magdec magdec_full
+default: magdec 
 
-magdec: magdec.c
-	$(CC) $(CFLAGS) magdec.c -o $@
-
-magdec_full: magdec.c earth.c
-	$(CC) $(CFLAGS) -DFULL_TABLE magdec.c earth.c -o $@
-
+magdec: magdec.c earth.c
+	$(CC) $(CFLAGS) magdec.c earth.c earth2020.c -o $@
 
 clean:
-	rm -f *.o magdec magdec_full
+	rm -f *.o magdec 
