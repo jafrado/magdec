@@ -45,7 +45,7 @@ output which may be easily parsed in a Perl script as below.
 To use the model, go here and input your coords
 http://www.ngdc.noaa.gov/geomag-web/#igrfgrid
 
- For Continental North America, Greenland, tip of South America
+For Continental North America, Greenland, tip of South America
 
 Lat: Min=11, Max=73
 Lon: Min=169, Max=23
@@ -67,16 +67,19 @@ Declination
 CSV Output
 WMM 2014-2019
 
-Export the CSV file and save it (e.g. igrfgridData.csv)
+Here is an example of input below:
+
+![Example Image](data/igrf-grid-data.png)
+
+Export the CSV file and save it (e.g. igrfgridData.csv) (press Calculate above)
 
 
 Run the below:
 
 ./parse_mag_dec.pl igrfgridData.csv 
 
-Insert the resulting table output below into your code. See magdec.c 
-for an example of how to use the data and see earth.c for the full
-WMM table data. 
+Insert the resulting table output below into your code. See magdec.c for an example of how to use the data and see earth.c for the full WMM table data (earth2020.c for latest WMM2020 model).
+
 
 
 
