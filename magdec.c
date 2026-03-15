@@ -25,14 +25,8 @@ float lookup_magdev(float lat, float lon, int year)
 	
 	//printf("lookup: %d,%d\n", lati, loni);
 
-	if (year <= 2019) { 
-		c = &corr[0];
-		n = n_magdec_entries;
-	}
-	else { 
-		c = &corr_2020[0];
-		n = n_magdec_entries_2020;
-	}
+	c = &corr_2026[0];
+	n = n_magdec_entries_2026;
 	
 	for (i = 0; i < n; i++){ 
 		if ((c[i].lat == lati) && (c[i].lon == loni) && 

@@ -2,14 +2,6 @@
 #include <stdio.h>
 #include "magdec.h"
 
-/* Magdec location */
-typedef struct location_s{
-	char* city;
-	char* state;
-	char* country;
-	float lat;
-	float lon;
-} location_t;
 
 location_t locations[] = {
 	{"Miami Beach", "FLA", "USA", 25.7907, -80.1300},
@@ -24,13 +16,26 @@ location_t locations[] = {
 	{"Dochartaigh Castle", "Donegal", "Ireland", 55.315995, -7.371370},
 	{"Mageroya", "Nordkapp", "Norway", 71.129743, 25.874366},
 	{"South Pole", "SP", "Antartica", -89, 0},
-	{"North Pole", "NP", "Artic Ocean", 89, 0},	
+	{"North Pole", "NP", "Artic Ocean", 89, 0},
+	{"Brazil", "SAA", "South America", -14.242915, -53.189266}, /* Least change */
+	{"North Magnetic Pole", "NMP", "Arctic Ocean", 86.38, 164.06} /* Most change */
+
+	/* The North Magnetic Pole has migrated into the Russian hemisphere, 
+	 * estimated for the 2025-2026 period to be around 86.38°N, 164.06°E. 
+	 * 
+	 * The pole is moving toward Siberia at a speed of approximately 35-40 kilometers 
+	 * (20-25 miles) per year, causing massive changes in magnetic declination in the Arctic region. 
+	 */
+
 };
-#define n_locations ((sizeof(locations)/sizeof(locations[0])))
+#define _n_locations ((sizeof(locations)/sizeof(locations[0])))
+int n_locations = _n_locations;
 
-int years[] = {2019, 2020, 2021, 2022, 2023, 2024};
-#define n_years ((sizeof(years)/sizeof(years[0])))
+int years[] = {2026, 2027, 2028, 2029};
+#define _n_years ((sizeof(years)/sizeof(years[0])))
+int n_years = _n_years;
 
+#ifndef ARDUINO
 int main(int argc, char* argv[])
 {
 	int i, year;
@@ -56,3 +61,4 @@ int main(int argc, char* argv[])
 	}
 
 }
+#endif /* !ARDUINO */

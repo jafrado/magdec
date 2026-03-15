@@ -82,6 +82,10 @@ extern int n_magdec_entries;
 extern magdec_correction_t corr_2020[]; 
 extern int n_magdec_entries_2020;
 
+/* WMM 2026 data - 2026 to 2029 */
+extern magdec_correction_t corr_2026[]; 
+extern int n_magdec_entries_2026;
+
 /** 
  * @brief Look up the magnetic compass declination angle at a given
  * latitude/longitude for compass correction
@@ -95,7 +99,7 @@ float lookup_magdev(float lat, float lon, int year);
 
 
 /** 
- * @brief Calculate the magnetic compass declination angle at a given
+ * @brief Lookup the magnetic compass declination angle at a given
  * latitude/longitude for compass correction using WMM20xx
  * 
  *  @param lat the latitude for the location to lookup (decimal degrees)
@@ -104,6 +108,26 @@ float lookup_magdev(float lat, float lon, int year);
  *  @return The magnetic declination angle (in degrees)
  */
 float calc_magdev(float lat, float lon, int year);
+
+/**
+ * @brief wmm_declination  - Calculate magnetic declination at a surface point
+ *
+ * @param  lat_deg    geodetic latitude  (decimal degrees, +N / -S)
+ * @param  lon_deg    geodetic longitude (decimal degrees, +E / -W)
+ * @param  dyear      decimal year  (e.g. 2025.5)
+ *
+ * @return declination in degrees (+E / -W)
+ */
+double wmm_declination(double lat_deg, double lon_deg, double dyear);
+
+/* Magdec location */
+typedef struct location_s{
+	char* city;
+	char* state;
+	char* country;
+	float lat;
+	float lon;
+} location_t;
 
 
 #endif /* !__MAGDEC__H */
